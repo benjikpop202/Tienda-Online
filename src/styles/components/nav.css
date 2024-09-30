@@ -1,0 +1,85 @@
+nav{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding: 30px;
+    background:linear-gradient(45deg, #0780a3, #44cdf4, #91def3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #f4f4f4;
+}
+
+.Title{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    justify-content: flex-start;
+    width: 25%;
+}
+.Title img{
+    width: 45px;
+    height: 45px;
+}
+
+.Title h1{
+    font-size: 2rem;
+}
+
+ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    color: #f4f4f4;
+    list-style: none;
+}
+
+a{
+    font-size: 1.1rem;
+    color: #f4f4f4;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: lighter;
+}
+a:hover{
+    color: gray;
+}
+
+.UserItem{
+    display: flex;
+    padding: 5px 20px;
+    border: 2px solid #f4f4f4;
+    border-radius: 30px;
+    justify-content: space-between;
+}
+.UserItem img{
+    width: 40px;
+    height: 40px;
+}
+.UserItem button{
+    display: flex;
+    align-items: center;
+    border: none;
+    background: transparent;
+    color: #f4f4f4;
+    cursor: pointer;
+}
+
+@media (max-width: 1180px) {
+    .Title {
+        width: 30%; 
+        justify-content: flex-start; 
+    }
+
+    .Title h1 {
+        font-size: 1.5rem; 
+    }
+    .Title img{
+        width: 35px;
+        height: 35px;
+    }
+    ul {
+        width: 50%; 
+    }
+}
