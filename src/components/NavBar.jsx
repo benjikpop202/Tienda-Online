@@ -12,7 +12,7 @@ const Navbar = ()=>{
                 <li><a href="/contacto">contacto</a></li>
             </ul>
             <div className='UserItem'>
-            <button><img src={UserCircle} alt="userIcon" />Mi cuenta</button>
+            <button><img src={UserCircle} alt="userIcon" />Cuenta</button>
             </div>
         </nav>
     )
