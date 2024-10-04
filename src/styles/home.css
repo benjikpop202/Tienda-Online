@@ -20,3 +20,17 @@
     width: 100%;
     padding: 10px;
 }
+
+@media (max-width: 1240px) {
+    .ProductsContainer {
+        grid-template-columns: repeat(3, 1fr); 
+        padding: 7px;
+        
+    }
+}
+@media (max-width: 915px) {
+    .ProductsContainer {
+        grid-template-columns: repeat(2, 1fr); 
+        
+    }
+}

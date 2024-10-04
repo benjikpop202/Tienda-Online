@@ -9,6 +9,12 @@
     flex-direction: column;
     padding: 20px;
     border: none;
+    transition: 0.3s ease;
+}
+
+.card:hover{
+    box-shadow: 0 0 20px gray;
+    cursor: pointer;
 }
 
 .card img{

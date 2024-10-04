@@ -1,0 +1,15 @@
+
+.ContactoContainer{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.CardContact{
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(45deg, #0780a3, #44cdf4, #91def3);
+    border-radius: 30px;
+}

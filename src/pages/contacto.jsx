@@ -1,7 +1,11 @@
+import '../styles/contacto.css'
 
 const Contacto = ()=>{
     return(
-        <h1>Seccion de contactos</h1>
+       <div className="ContactoContainer">
+          <div className="CardContact">
+          </div>
+       </div>
     )
 }
 
