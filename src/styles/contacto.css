@@ -5,11 +5,31 @@
     min-height: 100vh;
     justify-content: center;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .CardContact{
+    color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
     width: 500px;
     height: 500px;
     background: linear-gradient(45deg, #0780a3, #44cdf4, #91def3);
     border-radius: 30px;
 }
+
+.raw{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    text-decoration: underline;
+}
+
+.raw img{
+    width: 30px;
+    height: 30px;
+}
+
