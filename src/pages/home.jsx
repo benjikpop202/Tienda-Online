@@ -1,10 +1,14 @@
 import '../styles/home.css'
 import Card from '../components/Cards'
+import Buscador from '../components/buscador'
 
 const Home = ()=>{
     return(
         <div className="home-container">
+          <div className="head">
+          <Buscador/>
           <h1>Resultados de Productos</h1>
+          </div>
           <div className='ProductsContainer'>
             <Card image={"/assets/products/Jacket man.jpeg"}
             title={"Camisa estilo casual"} descripcion={"camisa estilo causal a la venta"} precio={"$100.000"}></Card>
