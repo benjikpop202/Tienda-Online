@@ -24,6 +24,10 @@ const Home = ()=>{
             <Card image={"/assets/products/polera negra.jpeg"} title={"Sudadera Negra"} descripcion={"sudadera negra a un buen precio"} precio={"$20.000"}/>
             <Card image={"/assets/products/A12 green.jpeg"} title={"Galxy A12 Green Version"} descripcion={"un celular con estilo mas soft y aesthetic"} precio={"$125.000"}/>
             <Card image={"/assets/products/A12 samsung.jpeg"} title={"Samsung Galaxy A12"} descripcion={"Samsung A12 a la venta"} precio={"$120.000"}/>
+            <Card image={"/assets/products/2023 Ford Ranger Raptor.jpeg"} title={"Ford Ranger Raptor"} descripcion={"Ford ranger a prueba de de de cualquier desafio"} precio={"$10.000.000"}/>
+            <Card image={"/assets/products/descarga (11).jpeg"} title={"Adidas Shoes"} descripcion={"Zapatillas adidas blancas y negras"} precio={"$40.000"}/>
+            <Card image={"/assets/products/descarga (10).jpeg"} title={"Toyota Hylux"} descripcion={"Toyota Hylux Gris modelo 2024"} precio={"$12.000.000"}/>
+            <Card image={"/assets/products/Nike Shoes _ Nike Dunk Panda _ Color_ Black _ Size_ 9.jpeg"} title={"Nikes Dunk Panda"} descripcion={"Nikes Dunk Panda negras y blancas"} precio={"$50.000"}/>
           </div>
         </div>
     )

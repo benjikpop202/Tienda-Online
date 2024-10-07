@@ -16,10 +16,11 @@
     justify-content: space-between;
 }
 .head h1{
-    width: 50%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 30px;
 }
 
 .ProductsContainer{
@@ -38,6 +39,15 @@
         padding: 7px;
         
     }
+}
+@media (max-width: 1150px) {
+    .head{
+        flex-direction: column;
+    }
+    .head h1{
+        width: 100%;
+    }
+  
 }
 @media (max-width: 915px) {
     .ProductsContainer {

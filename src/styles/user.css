@@ -1,0 +1,41 @@
+
+.UserContenedor{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+.UserContenedor aside{
+    width: 30%;
+    padding: 30px;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+aside .head{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #f4f4f4;
+}
+
+.Options button{
+    padding: 10px 40px;
+    background: linear-gradient(45deg,rgb(232, 193, 121), orange);
+    color: #f4f4f4;
+    border-radius: 30px;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#carrito{
+    width: 30px;
+    height: 30px;
+}

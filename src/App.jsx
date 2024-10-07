@@ -3,6 +3,7 @@ import Navbar from './components/NavBar.jsx';
 import Home from './pages/home.jsx'
 import Categorias from './pages/categorias.jsx';
 import Contacto from './pages/contacto.jsx';
+import UserSection from './pages/user.jsx';
 import './styles/App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/categorias" element={<Categorias />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="/user" element={<UserSection />} />
         </Routes>
       </div>
     </Router>
