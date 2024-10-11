@@ -1,8 +1,28 @@
 import '../styles/home.css'
 import Card from '../components/Cards'
 import Buscador from '../components/buscador'
+import { useState, useEffect } from "react";
 
 const Home = ()=>{
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/productos");  // Solicitud al proxy
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchProducts();
+  }, []);
+
     return(
         <div className="home-container">
           <div className="head">
