@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 60%;
+    width: 50%;
 }
 
 .title{
@@ -18,7 +18,7 @@
 .title span{
     font-size: 1.5rem;
 }
-form{
+.formulario{
     display: flex;
     width: 80%;
     align-items: center;
@@ -27,7 +27,15 @@ form{
 
 .form{
     padding: 5px 10px;
-    font-size: 1rem;
+    font-size: 0.8rem;
+}
+
+.formulario button{
+    padding: 5px 8px;
+    background-color: orange;
+    color: #f4f4f4;
+    border: 1px solid #f4f4f4;
+    cursor: pointer;
 }
 
 @media (max-width: 1150px) {

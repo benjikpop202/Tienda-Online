@@ -14,6 +14,18 @@
     flex-direction: column;
     align-items: center;
 }
+.UserContenedor section{
+    width: 70%;
+}
+.historialContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.historialContainer h1{
+    margin: 30px;
+}
 
 aside .head{
     width: 100%;

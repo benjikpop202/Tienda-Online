@@ -13,7 +13,7 @@ const Buscador = ()=>{
           <div className="title">
           <img src="/search_24dp_666666_FILL0_wght400_GRAD0_opsz24.png" alt="buscador" /> <span>Busque lo que Necesites</span>
           </div>
-        <form action="" method="get">
+        <form className='formulario' action="" method="get">
             <select className='form' name="categoria" id="categoria">
                 <option value="">Categorias</option>
                 <option value="Moda">Moda</option>
@@ -38,6 +38,8 @@ const Buscador = ()=>{
         value={max}
         onChange={handleMaxChange}
       />
+
+      <button type="submit">Buscar</button>
         </form>
 
          </div>

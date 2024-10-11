@@ -11,7 +11,11 @@ const UserSection = ()=>{
                 <button><img id='carrito' src="/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="carrito.png" />Carrito</button>
             </div>
         </aside>
-        <section>Vistas de usuario</section>
+        <section>
+            <div className="historialContainer">
+                <h1>Historial de compras</h1>
+            </div>
+        </section>
     </div>
     </>
    )
