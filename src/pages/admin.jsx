@@ -19,7 +19,7 @@ const AdminSection = ()=>{
     {isFormVisible && (
       <div className="overlay">
         <div className="form-container">
-          <h2>Formulario</h2>
+          <h2>Añadir Producto</h2>
           <form method='post'>
               <input className='input' type="text" placeholder='ingrese Nombre '/>
               <select className='input' name="categorias" id="categoria">
@@ -34,17 +34,17 @@ const AdminSection = ()=>{
               <input className='input' type="text" placeholder='ingrese precio'/>
               <input className='input' type="text" placeholder='ingrese stock'/>
 
-            <button type="submit">Enviar</button>
+            <button type="submit">Agregar</button>
           
           </form>
-          <button onClick={toggleForm}>Cerrar</button>
+          <button id='cerrar' onClick={toggleForm}>Cerrar</button>
         </div>
       </div>
     )}
    <div className='AdminContainer'>
       <aside>
         <h2>Admin</h2>
-        <button onClick={toggleForm}>Agregar Producto</button>
+        <button id='add' onClick={toggleForm}><img src="/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="add" />Agregar Producto</button>
       </aside>
       <section>
       <table>

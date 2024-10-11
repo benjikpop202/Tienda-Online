@@ -1,4 +1,6 @@
-
+button{
+    cursor: pointer;
+}
 .AdminContainer{
     display: flex;
     width: 100%;
@@ -47,6 +49,18 @@
     padding: 10px;
     font-size: 1rem;
   }
+  .form-container form button{
+    padding: 5px 10px;
+    background-color: rgb(46, 216, 12);
+    color: #f4f4f4;
+    border-radius: 30px;
+    border: none;
+    font-size: 1rem;
+  }
+
+  #cerrar{
+    padding: 5px 10px;
+  }
 
 
 .AdminContainer aside{
@@ -60,8 +74,19 @@
 .AdminContainer aside h2{
     margin: 30px;
 }
-.AdminContainer aside button{
+#add{
+    display: flex;
+    align-items: center;
     padding: 10px 20px;
+    background-color: #e46d6d;
+    color: #f4f4f4;
+    border: none;
+    font-size: 1.1rem;
+}
+
+#add img{
+    width: 30px;
+    height: 30px;
 }
 
 .AdminContainer section{
@@ -74,20 +99,21 @@
 .AdminContainer table{
     max-width: 1000px;
     margin: 50px;
-    border: 1px solid #333;
+    background-color: #ccc;
     border-collapse: separate; /* Asegura que el espaciado entre celdas se aplique */
-    border-spacing: 10px; /
+    border-spacing: 10px; 
+    border-radius: 20px;
 }
-.AdminContainer table thead {
-    background-color: #000; /* Fondo negro */
-    color: #fff; /* Texto blanco */
-    padding: 10px;
+.AdminContainer table thead { 
+    color: #e46d6d; /* Texto blanco */
+    padding: 20px;
     text-align: left; 
-    border-collapse: collapse; 
+    /*border-collapse: collapse; */
 }
 
 .AdminContainer table tbody {
-    border-spacing: 10px; /* Espaciado solo en el cuerpo de la tabla */
+    border-spacing: 10px;
+     /* Espaciado solo en el cuerpo de la tabla */
 }
 
 .AdminContainer table th, 
