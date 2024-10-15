@@ -1,45 +1,43 @@
 import '../styles/admin.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Form from '../components/form';
 const AdminSection = ()=>{
-  const [products, setUsers] = useState([
-    { id: 1, nombre: 'iphone10', categoria: 'tecnologia', descricpion:'iphoneX 2017', precio:1200, stock: 2 },
-    { id: 2, nombre: 'renault fluence', categoria: 'vehiculos', descricpion:'renault fluence modelo 2020', precio:1200000, stock: 3 },
-    { id: 3, nombre: 'iphone13', categoria: 'tecnologia', descricpion:'iphone13 2024', precio:1300, stock: 1 },
-  ]);
+ const [products, setProducts] = useState([])
+ const [loading, setLoading] = useState(true);
+ const [error, setError] = useState(null);
 
-  const [isFormVisible, setIsFormVisible] = useState(false);
+ const [isFormVisible, setIsFormVisible] = useState(false);
 
   const toggleForm = () => {
     setIsFormVisible(!isFormVisible);
   };
+  useEffect(() => {
+    // Función para obtener los productos desde el backend
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/productos");
+        if (!response.ok) {
+          throw new Error("Error al obtener los productos");
+        }
+        const data = await response.json();
+        setProducts(data);  // Guarda los productos en el estado
+      } catch (err) {
+        setError(err.message);  // Maneja errores
+      } finally {
+        setLoading(false);  // Termina la carga
+      }
+    };
 
+    fetchProducts();  // Llama a la función al montar el componente
+  }, []);  // Solo se ejecuta una vez al montar
+
+  if (loading) return <p>Cargando productos...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <>
     {isFormVisible && (
-      <div className="overlay">
-        <div className="form-container">
-          <h2>Añadir Producto</h2>
-          <form method='post'>
-              <input className='input' type="text" placeholder='ingrese Nombre '/>
-              <select className='input' name="categorias" id="categoria">
-                <option value="">ingrese categoria</option>
-                <option value="moda">Moda</option>
-                <option value="tecnologia">Tecnologia</option>
-                <option value="hogar">Hogar</option>
-                <option value="electrodomesticos">Electrodomesticos</option>
-                <option value="vehiculos">Vehiculos</option>
-              </select>
-              <input className='input' type="text" placeholder='ingrese descripcion'/>
-              <input className='input' type="text" placeholder='ingrese precio'/>
-              <input className='input' type="text" placeholder='ingrese stock'/>
-
-            <button type="submit">Agregar</button>
-          
-          </form>
-          <button id='cerrar' onClick={toggleForm}>Cerrar</button>
-        </div>
-      </div>
+      <Form toggleFunction={toggleForm} />
     )}
    <div className='AdminContainer'>
       <aside>
@@ -60,11 +58,11 @@ const AdminSection = ()=>{
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
+            <tr key={product._id}>
+              <td>{product._id}</td>
               <td>{product.nombre}</td>
               <td>{product.categoria}</td>
-              <td>{product.descricpion}</td>
+              <td>{product.descripcion}</td>
               <td>{product.precio}</td>
               <td>{product.stock}</td>
             </tr>
