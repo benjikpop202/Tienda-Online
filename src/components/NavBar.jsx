@@ -12,7 +12,7 @@ const Navbar = ()=>{
                 <li><a href="/contacto">contacto</a></li>
             </ul>
             <div className='UserItem'>
-              <a href="/user"><button><img src={UserCircle} alt="userIcon" />Cuenta</button></a>
+                <a href="/carrito"><button><img id='carrito' src="/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="carrito.png" />Carrito</button></a>
             </div>
         </nav>
     )

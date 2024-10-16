@@ -11,6 +11,22 @@ const AdminSection = ()=>{
   const toggleForm = () => {
     setIsFormVisible(!isFormVisible);
   };
+  const handleDelete = async (productId, button)=>{
+    try {
+      const response = await fetch(`/api/productos/${productId}`, {
+        method: 'DELETE',
+      })
+      if(response.ok){
+        alert('producto eliminado exitosamente')
+        let NewProducts = products.filter((producto)=> producto._id !== productId)
+        setProducts(NewProducts)
+      }else{
+        alert('error al eliminar el producto:', response.status)
+      }
+    } catch (error) {
+      console.log('error de la peticion', error)
+    }
+  }
   useEffect(() => {
     // Función para obtener los productos desde el backend
     const fetchProducts = async () => {
@@ -54,6 +70,8 @@ const AdminSection = ()=>{
             <th>Descripcion</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>eliminar</th>
+            <th>editar</th>
           </tr>
         </thead>
         <tbody>
@@ -65,6 +83,8 @@ const AdminSection = ()=>{
               <td>{product.descripcion}</td>
               <td>{product.precio}</td>
               <td>{product.stock}</td>
+              <td><button id='delete' onClick={() => handleDelete(product._id, this)}><img src="/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24 (1).png" alt="delete" /></button></td>
+              <td><button id='edit'><img src="/edit_note_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="edit" /></button></td>
             </tr>
           ))}
         </tbody>
