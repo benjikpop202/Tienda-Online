@@ -10,18 +10,27 @@ const Home = ()=>{
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Función para obtener los productos desde el backend
     const fetchProducts = async () => {
       try {
-        const response = await fetch("/api/productos");  // Solicitud al proxy
+        const response = await fetch("/api/productos");
+        if (!response.ok) {
+          throw new Error("Error al obtener los productos");
+        }
         const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.error(error);
+        setProducts(data);  // Guarda los productos en el estado
+      } catch (err) {
+        setError(err.message);  // Maneja errores
+      } finally {
+        setLoading(false);  // Termina la carga
       }
     };
-  
-    fetchProducts();
-  }, []);
+
+    fetchProducts();  // Llama a la función al montar el componente
+  }, []);  // Solo se ejecuta una vez al montar
+
+  if (loading) return <p id='loading'>Cargando productos...</p>;
+  if (error) return <p>{error}</p>;
 
     return(
         <div className="home-container">
@@ -30,24 +39,17 @@ const Home = ()=>{
           <h1>Resultados de Productos</h1>
           </div>
           <div className='ProductsContainer'>
-            <Card image={"/assets/products/Jacket man.jpeg"}
-            title={"Camisa estilo casual"} descripcion={"camisa estilo causal a la venta"} precio={"$100.000"}></Card>
-            <Card 
-            image={"/assets/products/Mouse led.jpeg"}
-            title={"Mouse con Bluetooth"}
-            descripcion={"Mouse con Bluetooth y luces LED para una experiencia unica"}
-            precio={"$20.000"}
-            />
-            <Card image={"/assets/products/Coverse.jpeg"} title={"Zapatillas Converse"} descripcion={"zapatillas converse celestes a la moda"} precio={"$40.000"}/>
-            <Card image={"/assets/products/Cropped Woman.jpeg"} title={"Sudadera Cropped"} descripcion={"sudadera cropped femenina ideal para este verano"} precio={"$40.000"}/>
-            <Card image={"/assets/products/A20 samsung.jpeg"} title={"Samsung Galxy S20"} descripcion={"samsung S20 5G Ultima version a la venta"} precio={"$120.000"}/>
-            <Card image={"/assets/products/polera negra.jpeg"} title={"Sudadera Negra"} descripcion={"sudadera negra a un buen precio"} precio={"$20.000"}/>
-            <Card image={"/assets/products/A12 green.jpeg"} title={"Galxy A12 Green Version"} descripcion={"un celular con estilo mas soft y aesthetic"} precio={"$125.000"}/>
-            <Card image={"/assets/products/A12 samsung.jpeg"} title={"Samsung Galaxy A12"} descripcion={"Samsung A12 a la venta"} precio={"$120.000"}/>
-            <Card image={"/assets/products/2023 Ford Ranger Raptor.jpeg"} title={"Ford Ranger Raptor"} descripcion={"Ford ranger a prueba de de de cualquier desafio"} precio={"$10.000.000"}/>
-            <Card image={"/assets/products/descarga (11).jpeg"} title={"Adidas Shoes"} descripcion={"Zapatillas adidas blancas y negras"} precio={"$40.000"}/>
-            <Card image={"/assets/products/descarga (10).jpeg"} title={"Toyota Hylux"} descripcion={"Toyota Hylux Gris modelo 2024"} precio={"$12.000.000"}/>
-            <Card image={"/assets/products/Nike Shoes _ Nike Dunk Panda _ Color_ Black _ Size_ 9.jpeg"} title={"Nikes Dunk Panda"} descripcion={"Nikes Dunk Panda negras y blancas"} precio={"$50.000"}/>
+          {products.map((product) => (
+          <Card
+          key={product._id}
+          id={product._id}
+          image={"/assets/products/Jacket man.jpeg"}
+          title={product.nombre}
+          descripcion={product.descripcion}
+          precio={product.precio}
+          />
+         ))}
+            
           </div>
         </div>
     )
