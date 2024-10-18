@@ -5,6 +5,7 @@ import Categorias from './pages/categorias.jsx';
 import Contacto from './pages/contacto.jsx';
 import AdminSection from './pages/admin.jsx';
 import ProductSection from './pages/product.jsx';
+import CarritoSection from './pages/carrito.jsx';
 import './styles/App.css'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/admin" element={<AdminSection />} />
           <Route path="/product/:id" element={<ProductSection />} />
+          <Route path="/carrito" element={<CarritoSection />} />
         </Routes>
       </div>
     </Router>

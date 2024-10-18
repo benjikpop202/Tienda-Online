@@ -3,6 +3,7 @@ import '../styles/product.css'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+
 const ProductSection = ()=>{
     const { id } = useParams();
 
@@ -26,12 +27,15 @@ const ProductSection = ()=>{
         }
         getProduct();
     }, [])
+
+    
     if (loading) return <p id='loading'>Cargando producto...</p>;
     if (error) return <p>{error}</p>;
     return(
         <div className="ProductContainer">
          <ProductCard
-          imagen={'/assets/products/Jacket man.jpeg'} 
+          id={product._id}
+          imagen={product.imagenes[0]} 
           nombre={product.nombre}
           categoria={product.categoria}
           descripcion={product.descripcion}

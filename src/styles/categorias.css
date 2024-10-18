@@ -8,12 +8,15 @@
     min-height: 100vh;
 }
 .Raw{
+    padding: 10px;
     display: flex;
-    width: 80%;
-    align-items: center;
-    justify-content: space-between;
+    gap: 10px; 
+    overflow-x: auto; 
     margin-bottom: 30px;
 }
+.Raw > .card-container {
+    flex: 1 0 200px; /* Ajusta el tamaño de las cards */
+  }
 label{
     font-size: 2.5rem;
     margin: 30px;

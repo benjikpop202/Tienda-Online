@@ -1,28 +1,130 @@
 import '../styles/categorias.css'
 import Card from '../components/Cards'
+import { useState, useEffect } from 'react';
 const Categorias = ()=>{
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Función para obtener los productos desde el backend
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/productos");
+        if (!response.ok) {
+          throw new Error("Error al obtener los productos");
+        }
+        const data = await response.json();
+        setProducts(data); // Guarda los productos en el estado
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) return <p>Cargando productos...</p>;
+  if (error) return <p>{error}</p>;
+
+  const modaProducts = products.filter(product => product.categoria === 'moda');
+  const tecnologiaProducts = products.filter(product => product.categoria === 'tecnologia');
+  const hogarProducts = products.filter(product => product.categoria === 'hogar');
+  const electroProducts = products.filter(product => product.categoria === 'electrodomesticos' )
+  const vehiculosProducts = products.filter(product => product.categoria === 'vehiculos')
     return(
         <div className="CategoriasContainer">
-            <label htmlFor="moda">Moda</label>
-            <div id="moda" className="Raw">
-            <Card image={"/assets/products/Coverse.jpeg"} title={"Zapatillas Converse"} descripcion={"zapatillas converse celestes a la moda"} precio={"$40.000"}/>
-            <Card image={"/assets/products/Cropped Woman.jpeg"} title={"Sudadera Cropped"} descripcion={"sudadera cropped femenina ideal para este verano"} precio={"$40.000"}/>
-            <Card image={"/assets/products/polera negra.jpeg"} title={"Sudadera Negra"} descripcion={"sudadera negra a un buen precio"} precio={"$20.000"}/>
-            <Card image={"/assets/products/Jacket man.jpeg"}
-            title={"Camisa estilo casual"} descripcion={"camisa estilo causal a la venta"} precio={"$100.000"}/>
-            </div>
-            <label htmlFor="tecno">Tecnologia</label>
-            <div id="tecno" className="Raw">
-            <Card 
-            image={"/assets/products/Mouse led.jpeg"}
-            title={"Mouse con Bluetooth"}
-            descripcion={"Mouse con Bluetooth y luces LED para una experiencia unica"}
-            precio={"$20.000"}
-            />
-            <Card image={"/assets/products/A20 samsung.jpeg"} title={"Samsung Galxy S20"} descripcion={"samsung S20 5G Ultima version a la venta"} precio={"$120.000"}/>
-            <Card image={"/assets/products/A12 green.jpeg"} title={"Galxy A12 Green Version"} descripcion={"un celular con estilo mas soft y aesthetic"} precio={"$125.000"}/>
-            <Card image={"/assets/products/A12 samsung.jpeg"} title={"Samsung Galaxy A12"} descripcion={"Samsung A12 a la venta"} precio={"$120.000"}/>
-            </div>
+            {modaProducts.length > 0 && 
+              <>
+              <label htmlFor="moda">Moda</label>
+               <div id="moda" className="Raw">
+               {modaProducts.map((product)=> (
+                <Card
+                key={product._id}
+                id={product._id}
+                image={product.imagenes[0]} 
+                title={product.nombre}
+                descripcion={product.descripcion}
+                precio={product.precio}
+              />
+               ))}
+               </div>
+              </>
+            }
+            
+            {tecnologiaProducts.length > 0 && 
+              <>
+              <label htmlFor="tecno">Tecnologia</label>
+               <div id="tecno" className="Raw">
+                {tecnologiaProducts.map((product)=>(
+                    <Card
+                    key={product._id}
+                    id={product._id}
+                    image={product.imagenes[0]} 
+                    title={product.nombre}
+                    descripcion={product.descripcion}
+                    precio={product.precio}
+                  />
+                ))}
+               </div>
+              </>
+            }
+
+            {hogarProducts.length > 0 && 
+              <>
+              <label htmlFor="hogar">Hogar</label>
+               <div id="hogar" className="Raw">
+                {hogarProducts.map((product)=>(
+                    <Card
+                    key={product._id}
+                    id={product._id}
+                    image={product.imagenes[0]} 
+                    title={product.nombre}
+                    descripcion={product.descripcion}
+                    precio={product.precio}
+                  />
+                ))}
+               </div>
+              </>
+            }
+
+            {electroProducts.length > 0 && 
+              <>
+              <label htmlFor="electro">Electrodomesticos</label>
+               <div id="electro" className="Raw">
+                {electroProducts.map((product)=>(
+                    <Card
+                    key={product._id}
+                    id={product._id}
+                    image={product.imagenes[0]} 
+                    title={product.nombre}
+                    descripcion={product.descripcion}
+                    precio={product.precio}
+                  />
+                ))}
+               </div>
+              </>
+            }
+
+            {vehiculosProducts.length > 0 && 
+              <>
+              <label htmlFor="vehiculo">Vehiculos</label>
+               <div id="vehiculo" className="Raw">
+                {vehiculosProducts.map((product)=>(
+                    <Card
+                    key={product._id}
+                    id={product._id}
+                    image={product.imagenes[0]} 
+                    title={product.nombre}
+                    descripcion={product.descripcion}
+                    precio={product.precio}
+                  />
+                ))}
+               </div>
+              </>
+            }
         </div>
     )
 }
