@@ -43,7 +43,7 @@ const Home = ()=>{
           <Card
           key={product._id}
           id={product._id}
-          image={"/assets/products/Jacket man.jpeg"}
+          image={product.imagenes[0]}
           title={product.nombre}
           descripcion={product.descripcion}
           precio={product.precio}
