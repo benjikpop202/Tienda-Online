@@ -4,11 +4,11 @@ import Buscador from '../components/buscador';
 import { useState, useEffect } from "react";
 
 const Home = () => {
-    const [products, setProducts] = useState([]);
+    //const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [productosFiltrados, setProductosFiltrados] = useState([]); // Estado para productos filtrados
-
+    const [someData, setSomeData] = useState(true)
     useEffect(() => {
         // Función para obtener los productos desde el backend
         const fetchProducts = async () => {
@@ -18,7 +18,10 @@ const Home = () => {
                     throw new Error("Error al obtener los productos");
                 }
                 const data = await response.json();
-                setProducts(data); // Guarda los productos en el estado
+                if(data.length == 0){
+                    setSomeData(!someData)
+                }
+                //setProducts(data); // Guarda los productos en el estado
                 setProductosFiltrados(data); // Inicialmente, los productos filtrados son todos los productos
             } catch (err) {
                 setError(err.message); // Maneja errores
@@ -40,6 +43,9 @@ const Home = () => {
                 <h1>Resultados de Productos</h1>
             </div>
             <div className='ProductsContainer'>
+                {!someData && (
+                    <span>Sin resultados</span>
+                )}
                 {productosFiltrados.map((product) => (
                     <Card
                         key={product._id}

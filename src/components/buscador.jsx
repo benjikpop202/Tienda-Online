@@ -12,7 +12,8 @@ const Buscador = ({ setProductosFiltrados }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Evita el comportamiento predeterminado del formulario
-
+        const url = `/api/productos?categoria=${categoria}&precioMin=${min}&precioMax=${max}`;
+        console.log("URL de búsqueda:", url); 
         // Aquí puedes hacer la solicitud a tu backend
         try {
             const response = await fetch(`/api/productos?categoria=${categoria}&precioMin=${min}&precioMax=${max}`);
@@ -34,11 +35,11 @@ const Buscador = ({ setProductosFiltrados }) => {
             <form className='formulario' onSubmit={handleSubmit}>
                 <select className='form' name="categoria" id="categoria" onChange={handleCategoriaChange}>
                     <option value="">Categorias</option>
-                    <option value="Moda">Moda</option>
-                    <option value="Tecnologia">Tecnologia</option>
-                    <option value="Hogar">Hogar</option>
-                    <option value="Electrodomesticos">Electrodomesticos</option>
-                    <option value="Vehiculos">Vehiculos</option>
+                    <option value="moda">Moda</option>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="hogar">Hogar</option>
+                    <option value="electrodomesticos">Electrodomesticos</option>
+                    <option value="vehiculos">Vehiculos</option>
                 </select>
                 <input
                     className='form'
