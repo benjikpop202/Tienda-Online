@@ -10,6 +10,10 @@ const ProductSection = ()=>{
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const cloudinaryUrl = (publicId) => 
+      `https://res.cloudinary.com/dsd3aqbqf/image/upload/${publicId}.jpg`;
+
     useEffect(()=>{
         const getProduct = async ()=>{
             try {

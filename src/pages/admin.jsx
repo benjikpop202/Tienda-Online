@@ -10,6 +10,9 @@ const AdminSection = ()=>{
  const [isFormVisible, setIsFormVisible] = useState(false);
  const [isEditing, setIsediting] = useState(false)
 
+ const cloudinaryUrl = (publicId) => 
+  `https://res.cloudinary.com/dsd3aqbqf/image/upload/${publicId}.jpg`;
+
  const changeEditform = () => {setIsediting(!isEditing)}
  const handleEditClick = (product) => {
   changeEditform()
@@ -118,7 +121,7 @@ const handleSave = async () => {
             <tr key={product._id}>
               <td>{product._id}</td>
               <td>{product.nombre}</td>
-              <td><img className='img' src={product.imagenes[0]} alt="img" /></td>
+              <td><img className='img' src={cloudinaryUrl(product.imagenes[0])} alt="img" /></td>
               <td>{product.categoria}</td>
               <td>{product.descripcion}</td>
               <td>{product.precio}</td>

@@ -4,17 +4,24 @@ import '../styles/components/Carucel.css';
 
 const Carousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    let [posicion, setPosicion] = useState(1)
+
+    const cloudinaryUrl = (publicId) => 
+        `https://res.cloudinary.com/dsd3aqbqf/image/upload/${publicId}.jpg`;
+
 
     const prevSlide = () => {
         setCurrentIndex((prevIndex) =>
             prevIndex === 0 ? images.length - 1 : prevIndex - 1
         );
+        
     };
 
     const nextSlide = () => {
         setCurrentIndex((prevIndex) =>
             prevIndex === images.length - 1 ? 0 : prevIndex + 1
         );
+        
     };
 
     return (
@@ -23,17 +30,17 @@ const Carousel = ({ images }) => {
                 className="carousel-inner"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-                {images.map((image, index) => (
+                {images.map((publicId, index) => (
                     <div className="carousel-item" key={index}>
-                        <img src={image} alt={`Slide ${index}`} />
+                        <img src={cloudinaryUrl(publicId)} alt={`Slide ${index}`} />
                     </div>
                 ))}
             </div>
             <button className="carousel-btn prev" onClick={prevSlide}>
-                &#9664;
+                <img className='Arrow' src="/arrow_back_ios_24dp_666666_FILL0_wght400_GRAD0_opsz24.png" alt="prev" />
             </button>
             <button className="carousel-btn next" onClick={nextSlide}>
-                &#9654;
+                <img className='Arrow' src="/arrow_forward_ios_24dp_666666_FILL0_wght400_GRAD0_opsz24.png" alt="next" />
             </button>
         </div>
     );

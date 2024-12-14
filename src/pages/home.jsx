@@ -33,6 +33,7 @@ const Home = () => {
         fetchProducts(); // Llama a la función al montar el componente
     }, []); // Solo se ejecuta una vez al montar
 
+
     if (loading) return <p id='loading'>Cargando productos...</p>;
     if (error) return <p>{error}</p>;
 
