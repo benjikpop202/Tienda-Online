@@ -44,7 +44,7 @@ button{
 
 }
 .AdminContainer table{
-    max-width: 1200px;
+    max-width: 1300px;
     margin-bottom: 30px;
     background-color: #ccc;
     border-collapse: separate; /* Asegura que el espaciado entre celdas se aplique */
@@ -72,6 +72,12 @@ button{
 
 .AdminContainer table th {
     border-bottom: 2px solid #fff; /* Línea más gruesa en el encabezado */
+}
+
+.img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
 
 #delete{
@@ -112,5 +118,12 @@ button{
     justify-content: center;
     align-items: center;
     z-index: 10;
+}
+
+.CardEdit{
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    background-color: #f4f4f4;
 }
 

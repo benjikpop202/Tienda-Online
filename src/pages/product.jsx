@@ -35,7 +35,7 @@ const ProductSection = ()=>{
         <div className="ProductContainer">
          <ProductCard
           id={product._id}
-          imagen={product.imagenes[0]} 
+          imagenes={product.imagenes} 
           nombre={product.nombre}
           categoria={product.categoria}
           descripcion={product.descripcion}

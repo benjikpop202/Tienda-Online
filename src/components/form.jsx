@@ -9,8 +9,12 @@ const Form = ({toggleFunction})=>{
     const [imagenes, setImagenes] = useState([])
 
     const handleImagenesChange = (e) => {
-      setImagenes(e.target.files); // Almacena los archivos seleccionados
-  };
+      const nuevosArchivos = Array.from(e.target.files);
+      setImagenes((prevImagenes) => {
+        const actualizados = [...prevImagenes, ...nuevosArchivos];
+        return actualizados;
+      });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
@@ -71,7 +75,7 @@ const Form = ({toggleFunction})=>{
               <input className='input' type="text" placeholder='ingrese descripcion' value={descripcion} onChange={(e)=> setDescripcion(e.target.value)}/>
               <input className='input' type="text" placeholder='ingrese precio' value={precio} onChange={(e)=> setPrecio(e.target.value)}/>
               <input className='input' type="text" placeholder='ingrese stock' value={stock} onChange={(e)=> setStock(e.target.value)}/>
-              <input className='input' type="file" multiple onChange={handleImagenesChange}/>
+              <input className='input' type="file" name='"files[]' multiple onChange={handleImagenesChange}/>
             <button type="submit">Agregar</button>
           
           </form>

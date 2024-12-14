@@ -2,8 +2,9 @@ import '../styles/components/ProductCard.css'
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 import { jsPDF } from 'jspdf'; 
+import Carousel from './carusel';
 
-const ProductCard = ({id,imagen, nombre, categoria, precio, descripcion, stock: initialStock})=>{
+const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock: initialStock})=>{
     const [product, setProduct] = useState([]);
     const [stock, setStock] = useState(initialStock);
     const [loading, setLoading] = useState(true);
@@ -105,7 +106,7 @@ const ProductCard = ({id,imagen, nombre, categoria, precio, descripcion, stock: 
     return(
         <div className="cardContainer">
             <section>
-                <img src={imagen} alt="ProductImg" />
+                <Carousel images={imagenes}></Carousel>
             </section>
             <aside>
                 <h1 id='nombre'>{nombre}</h1>

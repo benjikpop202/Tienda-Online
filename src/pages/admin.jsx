@@ -8,8 +8,11 @@ const AdminSection = ()=>{
  const [error, setError] = useState(null);
  const [editingProduct, setEditingProduct] = useState(null);
  const [isFormVisible, setIsFormVisible] = useState(false);
+ const [isEditing, setIsediting] = useState(false)
 
+ const changeEditform = () => {setIsediting(!isEditing)}
  const handleEditClick = (product) => {
+  changeEditform()
   setEditingProduct(product);
 };
 // Función para manejar el cambio en los inputs del formulario
@@ -26,7 +29,7 @@ const handleSave = async () => {
     ));
 
     // Llamada PUT al backend para actualizar en la base de datos
-    const response = await fetch(`/api/productos/${editingProduct.id}`, {
+    const response = await fetch(`/api/productos/${editingProduct._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -101,6 +104,7 @@ const handleSave = async () => {
           <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Imagen</th>
             <th>Categoria</th>
             <th>Descripcion</th>
             <th>Precio</th>
@@ -114,6 +118,7 @@ const handleSave = async () => {
             <tr key={product._id}>
               <td>{product._id}</td>
               <td>{product.nombre}</td>
+              <td><img className='img' src={product.imagenes[0]} alt="img" /></td>
               <td>{product.categoria}</td>
               <td>{product.descripcion}</td>
               <td>{product.precio}</td>
@@ -125,7 +130,7 @@ const handleSave = async () => {
         </tbody>
       </table>
       </section>
-      {editingProduct && (
+      {editingProduct && isEditing && (
         <div className="Overlay2">
             <div className='CardEdit'>
         <h2>Editar Producto</h2>
@@ -157,11 +162,11 @@ const handleSave = async () => {
               value={editingProduct.categoria} 
               onChange={handleChange}
             >
-              <option value="Moda">Moda</option>
-              <option value="Tecnología">Tecnología</option>
-              <option value="Hogar">Hogar</option>
-              <option value="Electrodomésticos">Electrodomésticos</option>
-              <option value="Vehículos">Vehículos</option>
+              <option value="moda">Moda</option>
+              <option value="tecnologia">Tecnología</option>
+              <option value="hogar">Hogar</option>
+              <option value="electrodomésticos">Electrodomésticos</option>
+              <option value="vehículos">Vehículos</option>
             </select>
           </label>
           <br />
@@ -185,6 +190,7 @@ const handleSave = async () => {
           </label>
           <br />
           <button type="button" onClick={handleSave}>Guardar</button>
+          <button type='button' onClick={changeEditform}>Cerrar</button>
         </form>
       </div>
         </div>
