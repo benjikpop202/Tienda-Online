@@ -33,7 +33,7 @@ const Home = () => {
         fetchProducts(); // Llama a la función al montar el componente
     }, []); // Solo se ejecuta una vez al montar
 
-
+    const ProductosDisponibles = productosFiltrados.filter(product => product.stock > 0)
     if (loading) return <p id='loading'>Cargando productos...</p>;
     if (error) return <p>{error}</p>;
 
@@ -47,7 +47,7 @@ const Home = () => {
                 {!someData && (
                     <span>Sin resultados</span>
                 )}
-                {productosFiltrados.map((product) => (
+                {ProductosDisponibles.map((product) => (
                     <Card
                         key={product._id}
                         id={product._id}

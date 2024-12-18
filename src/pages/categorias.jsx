@@ -28,12 +28,12 @@ const Categorias = ()=>{
 
   if (loading) return <p>Cargando productos...</p>;
   if (error) return <p>{error}</p>;
-
-  const modaProducts = products.filter(product => product.categoria === 'moda');
-  const tecnologiaProducts = products.filter(product => product.categoria === 'tecnologia');
-  const hogarProducts = products.filter(product => product.categoria === 'hogar');
-  const electroProducts = products.filter(product => product.categoria === 'electrodomesticos' )
-  const vehiculosProducts = products.filter(product => product.categoria === 'vehiculos')
+  const ProductosDisponibles = products.filter(product => product.stock > 0)
+  const modaProducts = ProductosDisponibles.filter(product => product.categoria === 'moda');
+  const tecnologiaProducts = ProductosDisponibles.filter(product => product.categoria === 'tecnologia');
+  const hogarProducts = ProductosDisponibles.filter(product => product.categoria === 'hogar');
+  const electroProducts = ProductosDisponibles.filter(product => product.categoria === 'electrodomesticos' )
+  const vehiculosProducts = ProductosDisponibles.filter(product => product.categoria === 'vehiculos')
     return(
         <div className="CategoriasContainer">
             {modaProducts.length > 0 && 
