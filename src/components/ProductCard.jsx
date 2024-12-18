@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 import { jsPDF } from 'jspdf'; 
 import Carousel from './carusel';
+import Loading from './loading';
 
 const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock: initialStock})=>{
     const [product, setProduct] = useState([]);
@@ -100,7 +101,7 @@ const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock
         }
     };
 
-     if (loading) return <p>Cargando producto...</p>;
+     if (loading) return <Loading/>;
      if (error) return <p>{error}</p>;
      if (!product) return null;
     return(

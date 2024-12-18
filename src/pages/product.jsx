@@ -2,6 +2,7 @@ import ProductCard from '../components/ProductCard'
 import '../styles/product.css'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Loading from '../components/loading';
 
 
 const ProductSection = ()=>{
@@ -33,7 +34,7 @@ const ProductSection = ()=>{
     }, [])
 
     
-    if (loading) return <p id='loading'>Cargando producto...</p>;
+    if (loading) return <Loading/>;
     if (error) return <p>{error}</p>;
     return(
         <div className="ProductContainer">

@@ -1,6 +1,8 @@
 import '../styles/categorias.css'
 import Card from '../components/Cards'
 import { useState, useEffect } from 'react';
+import Loading from '../components/loading';
+
 const Categorias = ()=>{
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +28,7 @@ const Categorias = ()=>{
     fetchProducts();
   }, []);
 
-  if (loading) return <p>Cargando productos...</p>;
+  if (loading) return <Loading/>;
   if (error) return <p>{error}</p>;
   const ProductosDisponibles = products.filter(product => product.stock > 0)
   const modaProducts = ProductosDisponibles.filter(product => product.categoria === 'moda');
