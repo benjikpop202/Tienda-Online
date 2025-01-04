@@ -1,0 +1,22 @@
+.overlay {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+  }
+
+.overlayContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+}

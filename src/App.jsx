@@ -6,6 +6,9 @@ import Contacto from './pages/contacto.jsx';
 import AdminSection from './pages/admin.jsx';
 import ProductSection from './pages/product.jsx';
 import CarritoSection from './pages/carrito.jsx';
+import Register from './pages/register.jsx';
+import Login from './pages/login.jsx';
+import Overlay from './components/overlay.jsx';
 import './styles/App.css'
 
 function App() {
@@ -15,6 +18,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path='/register' element={<Overlay contenido={<Register />}/>}/>
+          <Route path='/login' element={<Overlay contenido={<Login />}/>}/>
           <Route path="/categorias" element={<Categorias />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/admin" element={<AdminSection />} />

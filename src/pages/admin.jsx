@@ -1,6 +1,8 @@
 import '../styles/admin.css'
 import { useState, useEffect } from 'react';
 import Form from '../components/form';
+import Overlay from '../components/overlay';
+import Carousel from '../components/carusel';
 
 const AdminSection = ()=>{
  const [products, setProducts] = useState([])
@@ -9,6 +11,7 @@ const AdminSection = ()=>{
  const [editingProduct, setEditingProduct] = useState(null);
  const [isFormVisible, setIsFormVisible] = useState(false);
  const [isEditing, setIsediting] = useState(false)
+ const [isOpenImage, setIsOpenImage] = useState(false)
 
  const cloudinaryUrl = (publicId) => 
   `https://res.cloudinary.com/dsd3aqbqf/image/upload/${publicId}.jpg`;
@@ -49,9 +52,12 @@ const handleSave = async () => {
     console.error("Error actualizando el producto:", error);
   }
 };
-  const toggleForm = () => {
-    setIsFormVisible(!isFormVisible);
-  };
+const toggleImage = ()=>{
+  setIsOpenImage(!isOpenImage)
+}
+const toggleForm = ()=>{
+  setIsFormVisible(!isFormVisible)
+}
   const handleDelete = async (productId, button)=>{
     try {
       const response = await fetch(`/api/productos/${productId}`, {
@@ -93,8 +99,9 @@ const handleSave = async () => {
 
   return (
     <>
+  
     {isFormVisible && (
-      <Form toggleFunction={toggleForm} />
+      <Overlay contenido={<Form toggleFunction={toggleForm} />}/>
     )}
    <div className='AdminContainer'>
       <aside>
@@ -121,7 +128,7 @@ const handleSave = async () => {
             <tr key={product._id}>
               <td>{product._id}</td>
               <td>{product.nombre}</td>
-              <td><img className='img' src={cloudinaryUrl(product.imagenes[0])} alt="img" /></td>
+              <td><img className='img' src={cloudinaryUrl(product.imagenes[0])} alt="img" onClick={toggleImage}/></td>
               <td>{product.categoria}</td>
               <td>{product.descripcion}</td>
               <td>{product.precio}</td>

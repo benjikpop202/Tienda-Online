@@ -12,6 +12,16 @@ nav{
     color: #f4f4f4;
 }
 
+.hidden{
+    display: none;
+    background-color: transparent;
+    border: none;
+}
+.hidden img{
+    width: 30px;
+    height: 30px;
+}
+
 .Title{
     display: flex;
     height: 100%;
@@ -84,4 +94,13 @@ a:hover{
     ul {
         width: 50%; 
     }
+    .UserItem button{
+        padding: 5 25px;
+
+    }
+    .UserItem img{
+        width: 25px;
+        height: 25px;
+    }
 }
+

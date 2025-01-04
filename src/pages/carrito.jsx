@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import Card from '../components/Cards';
-
+import Loading from '../components/loading';
 
 const CarritoSection = ()=>{
   const [products, setProducts] = useState([]);
@@ -30,7 +30,7 @@ const CarritoSection = ()=>{
     fetchProducts();
   }, []);  // Solo se ejecuta una vez al montar
 
-  if (loading) return <p>Cargando carrito...</p>;
+  if (loading) return <Loading/>;
   if (error) return <p>{error}</p>;
   if (products.length === 0) return <p>No hay productos en el carrito</p>;
 

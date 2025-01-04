@@ -51,8 +51,11 @@ button{
     border-spacing: 10px; 
     border-radius: 20px;
 }
+.AdminContainer table img{
+    cursor: pointer;
+}
 .AdminContainer table thead { 
-    color: #e46d6d; /* Texto blanco */
+    color: #676565; /* Texto blanco */
     padding: 20px;
     text-align: left; 
     /*border-collapse: collapse; */
@@ -83,7 +86,7 @@ button{
 #delete{
     padding: 10px 15px;
     color: #f4f4f4;
-    background-color: orangered;
+    background-color: #676565;
     border: none;
     border-radius: 10px;
 }
@@ -96,7 +99,7 @@ button{
 #edit{
     padding: 5px 10px;
     color: #f4f4f4;
-    background-color: orange;
+    background-color: #676565;
     border: none;
     border-radius: 10px;
 }

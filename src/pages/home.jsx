@@ -40,7 +40,6 @@ const Home = () => {
         <div className="home-container">
             <div className="head">
                 <Buscador setProductosFiltrados={setProductosFiltrados} /> {/* Pasa la función para actualizar los productos filtrados */}
-                <h1>Resultados de Productos</h1>
             </div>
             <div className='ProductsContainer'>
                 {ProductosDisponibles.map((product) => (

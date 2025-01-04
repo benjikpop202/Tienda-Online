@@ -59,7 +59,6 @@ const Form = ({toggleFunction})=>{
       };
 
     return(
-        <div className="overlay">
         <div className="form-container">
           <h2>Añadir Producto</h2>
           <form onSubmit={handleSubmit}>
@@ -81,7 +80,7 @@ const Form = ({toggleFunction})=>{
           </form>
           <button id='cerrar' onClick={toggleFunction}>Cerrar</button>
         </div>
-      </div>
+      
     )
 }
 
