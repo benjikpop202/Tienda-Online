@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext.jsx';
 import Navbar from './components/NavBar.jsx';
 import Home from './pages/home.jsx'
 import Categorias from './pages/categorias.jsx';
@@ -13,7 +14,8 @@ import './styles/App.css'
 
 function App() {
   return (
-    <Router>
+    <AuthProvider>
+     <Router>
       <Navbar />  
       <div className="App">
         <Routes>
@@ -28,6 +30,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
