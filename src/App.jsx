@@ -10,6 +10,7 @@ import CarritoSection from './pages/carrito.jsx';
 import Register from './pages/register.jsx';
 import Login from './pages/login.jsx';
 import Overlay from './components/overlay.jsx';
+import ProtectRoute from './ProtectRote.jsx';
 import './styles/App.css'
 
 function App() {
@@ -19,14 +20,16 @@ function App() {
       <Navbar />  
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path='/register' element={<Overlay contenido={<Register />}/>}/>
           <Route path='/login' element={<Overlay contenido={<Login />}/>}/>
-          <Route path="/categorias" element={<Categorias />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/admin" element={<AdminSection />} />
-          <Route path="/product/:id" element={<ProductSection />} />
-          <Route path="/carrito" element={<CarritoSection />} />
+          <Route element={<ProtectRoute />}>
+           <Route path="/" element={<Home />} />
+           <Route path="/categorias" element={<Categorias />} />
+           <Route path="/contacto" element={<Contacto />} />
+           <Route path="/admin" element={<AdminSection />} />
+           <Route path="/product/:id" element={<ProductSection />} />
+           <Route path="/carrito" element={<CarritoSection />} />
+          </Route>
         </Routes>
       </div>
     </Router>

@@ -43,7 +43,7 @@ const Register = ()=>{
             <p style={{color:'red'}}>Contraseña requerida</p>
            )}
            <button className='AuthSubmit' type="submit">Empezar Ahora</button>
-           <p>Ya tienes una cuenta? <a href="/login">Log in</a></p>
+           <p>Ya tienes una cuenta? <a href="/login">Iniciar Sesión</a></p>
         </form>
    )
 }
