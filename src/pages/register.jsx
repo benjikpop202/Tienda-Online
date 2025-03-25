@@ -8,12 +8,12 @@ const Register = ()=>{
    const {SignUp, isAuthenticated, errors: registerErrors} = useAuth()
    const Navigation = useNavigate()
    useEffect(()=>{
-     if(isAuthenticated && !registerErrors) Navigation('/')
-   },[isAuthenticated, registerErrors])
+     if(isAuthenticated) Navigation('/')
+   },[isAuthenticated])
 
    const Onsubmit = handleSubmit(async(values)=>{
       try {
-         SignUp(values)
+        await SignUp(values)
       } catch (error) {
          console.log(error.message);
          

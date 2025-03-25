@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from './axios.js'
 
 export const RegisterRequest = async (user)=>{try {
     const response = await axios.post('/api/register', user);
@@ -23,3 +23,5 @@ export const RegisterRequest = async (user)=>{try {
       throw new Error('Error de conexión con el servidor');
     }
   }}
+
+  export const verifyToken = () => axios.get('/api/verifyToken')

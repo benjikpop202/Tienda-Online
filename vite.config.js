@@ -9,8 +9,8 @@ export default defineConfig({
     proxy: {
       // La clave es la ruta que usas en el frontend
       '/api': {
-        target: 'https://carritoexpress-backend.onrender.com',  // URL de tu backend
-        changeOrigin: true,
+        target: 'http://localhost:3000',  // URL de tu backend
+        changeOrigin: true
       // Opcional si no quieres el prefijo /api en el backend
       },
     },

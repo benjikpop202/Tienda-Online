@@ -8,7 +8,12 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { SignIn, errors: loginErrors } = useAuth();
+    const { SignIn, errors: loginErrors, isAuthenticated } = useAuth();
+    const Navigate = useNavigate()
+
+    useEffect(()=>{
+        if(isAuthenticated) Navigate('/')
+      },[isAuthenticated])
 
     const Onsubmit = handleSubmit(async (values) => {
         try {
