@@ -9,6 +9,8 @@
 }
 
 .head{
+    position: absolute;
+    top: 15%;
     margin: 3%;
     color: gray;
     display: flex;
@@ -17,13 +19,17 @@
     justify-content: space-between;
 }
 .head h1{
-    width: 40%;
+    width: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 30px;
 }
-
+.box-container{
+    position: absolute;
+    top: 35%;
+    width: 100%;
+}
 .ProductsContainer{
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
@@ -36,7 +42,6 @@
 }
 .SinResultado{
     display: flex;
-    height: 100%;
     width: 100%;
     position: absolute;
     align-items: center;

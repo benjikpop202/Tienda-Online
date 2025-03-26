@@ -35,12 +35,18 @@ const Home = () => {
     console.log(ProductosDisponibles.length)
     if (loading) return <Loading/>;
     if (error) return <p>{error}</p>;
-    if(!ProductosDisponibles.length) return <div className='SinResultado'><h1>Sin Resultados</h1></div>
+   // if(!ProductosDisponibles.length) return <div className='SinResultado'><h1>Sin Resultados</h1></div>
     return (
         <div className="home-container">
             <div className="head">
                 <Buscador setProductosFiltrados={setProductosFiltrados} /> {/* Pasa la función para actualizar los productos filtrados */}
             </div>
+            {!ProductosDisponibles.length && (
+                <div className='SinResultado'>
+                  <h1>Sin Resultados</h1>
+                </div>
+            )}
+            <div className='box-container'>
             <div className='ProductsContainer'>
                 {ProductosDisponibles.map((product) => (
                     <Card
@@ -52,6 +58,7 @@ const Home = () => {
                         precio={product.precio}
                     />
                 ))}
+            </div>
             </div>
         </div>
     );

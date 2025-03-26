@@ -36,12 +36,17 @@ const Carousel = ({ images }) => {
                     </div>
                 ))}
             </div>
-            <button className="carousel-btn prev" onClick={prevSlide}>
-                <img className='Arrow' src="/arrow_back_ios_24dp_666666_FILL0_wght400_GRAD0_opsz24.png" alt="prev" />
-            </button>
-            <button className="carousel-btn next" onClick={nextSlide}>
-                <img className='Arrow' src="/arrow_forward_ios_24dp_666666_FILL0_wght400_GRAD0_opsz24.png" alt="next" />
-            </button>
+              {images.length > 1 &&(
+               <>
+               <button className="carousel-btn prev" onClick={prevSlide}>
+              <img className='Arrow' src="/arrow_back_ios_24dp_666666_FILL0_wght400_GRAD0_opsz24.png" alt="prev" />
+              </button>
+               <button className="carousel-btn next" onClick={nextSlide}>
+              <img className='Arrow' src="/arrow_forward_ios_24dp_666666_FILL0_wght400_GRAD0_opsz24.png" alt="next" />
+             </button>
+               </>  
+              )}
+            
         </div>
     );
 };
