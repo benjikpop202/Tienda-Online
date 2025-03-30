@@ -24,4 +24,13 @@ export const RegisterRequest = async (user)=>{try {
     }
   }}
 
-  export const verifyToken = () => axios.get('/api/verifyToken')
+  export const verifyToken = async () => {
+    try {
+      const response = await axios.get('/api/verifyToken');
+      return response.data; // ✅ Retorna los datos correctamente
+    } catch (error) {
+      console.error("Error verificando el token:", error.response?.data || error.message);
+      return null; // ✅ Evita que falle el contexto
+    }
+  };
+  

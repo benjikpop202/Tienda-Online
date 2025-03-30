@@ -66,21 +66,28 @@ export const AuthProvider = ({children})=>{
         setLoading(false);
         return;
       }
-
+  
       try {
-        const res = await verifyToken(cookies.token);
-        console.log(res);
-        if (!res.data) return setIsAuthenticated(false);
+        const res = await verifyToken();
+        console.log("Verificación de token:", res); // ✅ Verifica la respuesta
+        if (!res) {
+          setIsAuthenticated(false);
+          setLoading(false);
+          return;
+        }
+  
+        setUser(res); // ✅ Guarda correctamente el usuario
         setIsAuthenticated(true);
-        setUser(res.data);
         setLoading(false);
       } catch (error) {
         setIsAuthenticated(false);
         setLoading(false);
       }
     };
+  
     checkLogin();
   }, []);
+  
 
     return(
         <AuthContext.Provider value={{SignUp,SignIn, loading, user, isAuthenticated, errors}}>

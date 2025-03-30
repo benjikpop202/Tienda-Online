@@ -123,10 +123,5 @@ button{
     z-index: 10;
 }
 
-.CardEdit{
-    display: flex;
-    flex-direction: column;
-    max-width: 1000px;
-    background-color: #f4f4f4;
-}
+
 

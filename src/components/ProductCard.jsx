@@ -4,6 +4,7 @@ import { useState, useEffect} from 'react';
 import { jsPDF } from 'jspdf'; 
 import Carousel from './carusel';
 import Loading from './loading';
+import { useAuth } from '../context/AuthContext'
 
 const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock: initialStock})=>{
     const [product, setProduct] = useState([]);
@@ -11,6 +12,7 @@ const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const {user, isAuthenticated} = useAuth()
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -58,10 +60,13 @@ const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock
       const downloadReceipt = () => {
         const doc = new jsPDF();
         doc.text(`Compra Confirmada:`, 10, 10);
-        doc.text(`Producto: ${nombre}`, 10, 20);
-        doc.text(`Categoría: ${categoria}`, 10, 30);
-        doc.text(`Precio: $${precio}`, 10, 40);
-        doc.text(`Descripción: ${descripcion}`, 10, 50);
+        {isAuthenticated && (
+          doc.text(`Usuario: ${user.userName}`, 10, 20)
+        )}
+        doc.text(`Producto: ${nombre}`, 10, 30);
+        doc.text(`Categoría: ${categoria}`, 10, 40);
+        doc.text(`Precio: $${precio}`, 10, 50);
+        doc.text(`Descripción: ${descripcion}`, 10, 60);
         
         // Descargar el PDF
         doc.save(`Comprobante_${nombre}.pdf`);
@@ -125,8 +130,8 @@ const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock
                     <div className="modal">
                         <h2>Confirmar compra</h2>
                         <p>¿Deseas confirmar la compra del producto: <strong>{nombre}</strong>?</p>
-                        <button onClick={confirmPurchase}>Confirmar</button>
-                        <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
+                        <button id='confirmar' onClick={confirmPurchase}>Confirmar</button>
+                        <button id='cancelar' onClick={() => setIsModalOpen(false)}>Cancelar</button>
                     </div>
                 </div>
             )}
