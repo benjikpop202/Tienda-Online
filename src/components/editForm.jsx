@@ -41,45 +41,38 @@ const FormEdit = ({ editingProduct, setProducts, products, closeForm }) => {
 
   return (
     <div className="CardEdit">
-      <h2>Editar Producto</h2>
-      <form>
-        <label>
-          Nombre:
-          <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} />
+      <form className="formEdit">
+        <label><h3>Nombre</h3>
+        <input type="text" name="nombre" className="input-edit" value={formData.nombre} onChange={handleChange} />
         </label>
-        <br />
-        <label>
-          Precio:
-          <input type="number" name="precio" value={formData.precio} onChange={handleChange} />
+        <label><h3>Precio</h3> 
+          <input type="number" name="precio" className="input-edit" value={formData.precio} onChange={handleChange} />
         </label>
-        <br />
-        <label>
-          Categoría:
-          <select name="categoria" value={formData.categoria} onChange={handleChange}>
+        <label><h3>Categoria</h3>
+          <select name="categoria" className="input-edit" value={formData.categoria} onChange={handleChange}>
             <option value="moda">Moda</option>
             <option value="tecnologia">Tecnología</option>
             <option value="hogar">Hogar</option>
             <option value="electrodomésticos">Electrodomésticos</option>
             <option value="vehículos">Vehículos</option>
           </select>
+         </label>
+        <label><h3>Descripcion</h3>
+          <textarea name="descripcion" className="input-edit" value={formData.descripcion} onChange={handleChange} />
         </label>
-        <br />
         <label>
-          Descripción:
-          <textarea name="descripcion" value={formData.descripcion} onChange={handleChange} />
+          <h3>Stock</h3>
+          <input type="number" className="input-edit" name="stock" value={formData.stock} onChange={handleChange} />
         </label>
-        <br />
-        <label>
-          Stock:
-          <input type="number" name="stock" value={formData.stock} onChange={handleChange} />
-        </label>
-        <br />
+        <div className="buttons">
         <button type="button" onClick={handleSave}>
           Guardar
         </button>
         <button type="button" onClick={closeForm}>
           Cerrar
         </button>
+        </div>
+        
       </form>
     </div>
   );

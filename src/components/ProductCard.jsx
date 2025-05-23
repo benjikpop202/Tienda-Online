@@ -12,9 +12,12 @@ const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [onCarrito, setOnCarrito] = useState(false)
     const {user, isAuthenticated} = useAuth()
     const navigate = useNavigate();
-
+  
+    
+    
     useEffect(() => {
         const fetchProduct = async () => {
           try {
@@ -24,6 +27,14 @@ const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock
             }
             const data = await response.json();
             setProduct(data); // Guardar el producto con su estado de carrito
+           
+            if (user && Array.isArray(user.carrito)) {
+            const itemExistente = user.carrito.find(
+            item => item.product.toString() === id.toString()
+             );
+            setOnCarrito(!!itemExistente)
+             }
+    
           } catch (err) {
             setError(err.message);
           } finally {
@@ -32,27 +43,40 @@ const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock
         };
     
         fetchProduct();
-      }, [id]); 
+      }, [id, user]); 
 
     const toggleCarrito = async () => {
-        if (product) {
-          const nuevoEstadoCarrito = !product.carrito;  // Invertir el valor de carrito
+        if (!onCarrito) {
           try {
-            // Hacer una solicitud PUT para actualizar el estado del carrito en el backend
-            const response = await fetch(`/api/productos/${id}`, {
-              method: 'PUT',
+            const response = await fetch(`/api/users/${user.id}/carrito`, {
+              method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ carrito: nuevoEstadoCarrito })
+              body: JSON.stringify({ productoId: id})
             });
     
             if (response.ok) {
-              // Actualizar el estado localmente después de que el backend confirme el cambio
-              setProduct({ ...product, carrito: nuevoEstadoCarrito });
+              setOnCarrito(true)
             } else {
-              throw new Error("Error al actualizar el producto");
+              throw new Error("Error al agregar el producto al carrito");
             }
           } catch (error) {
             console.error(error);
+          }
+        }else{
+          try {
+            const response = await fetch(`/api/users/${user.id}/carrito`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ productoId: id })
+            })
+            if (response.ok) {
+              setOnCarrito(false)
+            } else {
+              throw new Error("Error al quitar al producto del carrito");
+            }
+          } catch (error) {
+            console.log(error);
+            
           }
         }
       };
@@ -121,7 +145,7 @@ const ProductCard = ({id,imagenes, nombre, categoria, precio, descripcion, stock
                 <p id='descripcion'>{descripcion}</p>
                 <h2 id='stock'>Disponibles: {stock}</h2>
                 <div className="buttonSection">
-                <button id='carro' onClick={toggleCarrito}>{product.carrito ? 'Quitar' : 'Agregar'} <img className='icono' src="/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="carro" /></button>
+                <button id='carro' onClick={toggleCarrito}>{ onCarrito? 'Quitar' : 'Agregar'} <img className='icono' src="/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="carro" /></button>
                 <button id='comprar' onClick={handleBuy}>Comprar <img className='icono' src="/local_mall_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="cartera" /></button>
                 </div>
             </aside>

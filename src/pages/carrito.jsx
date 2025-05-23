@@ -1,25 +1,25 @@
 import {useState, useEffect} from 'react'
 import Card from '../components/Cards';
 import Loading from '../components/loading';
+import { useAuth } from '../context/AuthContext';
 
 const CarritoSection = ()=>{
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {user} = useAuth()
 
   useEffect(() => {
     // Función para obtener todos los productos
     const fetchProducts = async () => {
       try {
-        const response = await fetch("/api/productos");
+        const response = await fetch(`/api/users/${user.id}/carrito`);
         if (!response.ok) {
           throw new Error("Error al obtener los productos");
         }
         const data = await response.json();
 
-        // Filtrar productos cuyo atributo 'carrito' sea true
-        const productosEnCarrito = data.filter(product => product.carrito === true);
-        setProducts(productosEnCarrito);
+        setProducts(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -32,7 +32,7 @@ const CarritoSection = ()=>{
 
   if (loading) return <Loading/>;
   if (error) return <p>{error}</p>;
-  if (products.length === 0) return <p>No hay productos en el carrito</p>;
+  if (products.length === 0) return <div className='SinResultado'><h1>carrito vacio</h1></div>;
 
     return(
         <div className="ProductsContainer">

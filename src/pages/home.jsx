@@ -2,6 +2,7 @@ import '../styles/home.css';
 import Card from '../components/Cards';
 import Buscador from '../components/buscador';
 import Loading from '../components/loading';
+import AdminButton from '../components/AdminButton';
 import { useState, useEffect } from "react";
 
 const Home = () => {
@@ -60,6 +61,7 @@ const Home = () => {
                 ))}
             </div>
             </div>
+            <AdminButton/>
         </div>
     );
 };

@@ -50,6 +50,8 @@ const Form = ({toggleFunction})=>{
             setDescripcion('')
             setStock('')
             setImagenes([]);
+            toggleFunction()
+            
           } else {
             console.error('Error en la solicitud:', response.status);
           }

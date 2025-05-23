@@ -23,6 +23,19 @@ const AdminSection = () => {
     changeEditForm();
   };
 
+  const handleDeleteClick  = async (id) =>{
+    try {
+      const res = await fetch(`/api/productos/${id}`,{
+        method: 'DELETE'
+      })
+      if(!res.ok) throw new Error("error al eliminar producto")
+      alert("producto eliminado exitosamente")
+    } catch (error) {
+      console.log(error.message);
+      
+    }
+  }
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -89,7 +102,7 @@ const AdminSection = () => {
                   <td>{product.precio}</td>
                   <td>{product.stock}</td>
                   <td>
-                    <button id="delete">
+                    <button id="delete" onClick={() =>handleDeleteClick(product._id)}>
                       <img src="/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24 (1).png" alt="delete" />
                     </button>
                   </td>

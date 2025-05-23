@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext.jsx';
+import { useAuth } from './context/AuthContext.jsx';
 import Navbar from './components/NavBar.jsx';
 import Home from './pages/home.jsx'
 import Categorias from './pages/categorias.jsx';
@@ -11,11 +11,15 @@ import Register from './pages/register.jsx';
 import Login from './pages/login.jsx';
 import Overlay from './components/overlay.jsx';
 import ProtectRoute from './ProtectRote.jsx';
+import Loading from './components/loading.jsx';
 import './styles/App.css'
 
+
 function App() {
+  const {loading} = useAuth()
+
+  if (loading) return <Loading/>
   return (
-    <AuthProvider>
      <Router>
       <Navbar />  
       <div className="App">
@@ -33,7 +37,6 @@ function App() {
         </Routes>
       </div>
     </Router>
-    </AuthProvider>
   );
 }
 
